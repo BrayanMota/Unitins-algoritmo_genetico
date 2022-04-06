@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from prettytable import PrettyTable
-from matplotlib import pyplot as pl
 import random as rd
 
 from ag import AG
@@ -18,11 +17,15 @@ lista_professores.append(Professor(nome='Yhan', dia='quarta', turno='noite'))
 lista_professores.append(Professor(nome='Júlio', dia='quinta', turno='manhã'))
 lista_professores.append(Professor(nome='Brayan', dia='sexta', turno='tarde'))
 lista_professores.append(Professor(nome='Iann', dia='segunda', turno='noite'))
-lista_professores.append(Professor(nome='Giovanni', dia='terça', turno='manhã'))
+lista_professores.append(
+    Professor(nome='Giovanni', dia='terça', turno='manhã'))
 lista_professores.append(Professor(nome='Alex', dia='quarta', turno='tarde'))
-lista_professores.append(Professor(nome='Silvano', dia='quinta', turno='noite'))
-lista_professores.append(Professor(nome='Napoleão', dia='sexta', turno='manhã'))
-lista_professores.append(Professor(nome='Leandra', dia='segunda', turno='tarde'))
+lista_professores.append(
+    Professor(nome='Silvano', dia='quinta', turno='noite'))
+lista_professores.append(
+    Professor(nome='Napoleão', dia='sexta', turno='manhã'))
+lista_professores.append(
+    Professor(nome='Leandra', dia='segunda', turno='tarde'))
 lista_professores.append(Professor(nome='Carlos', dia='terça', turno='noite'))
 lista_professores.append(Professor(nome='Ligia', dia='quarta', turno='manhã'))
 lista_professores.append(Professor(nome='Odi', dia='quinta', turno='tarde'))
@@ -36,6 +39,7 @@ lista_professores.append(Professor(nome='Mailson', dia='sexta', turno='noite'))
 # lista_aulas.append(Aula(periodo=1, professor=lista_professores[3], materia='Português', sala='Sala 4'))
 # lista_aulas.append(Aula(periodo=1, professor=lista_professores[4], materia='Front End', sala='Sala 5'))
 
+
 nomes = []
 dias = []
 turnos = []
@@ -44,25 +48,25 @@ for professor in lista_professores:
     nomes.append(professor.nome)
     dias.append(professor.dia)
     turnos.append(professor.turno)
-limite = 3  
-tamanho_populacao = 20
+limite_dias = 5
+tamanho_populacao = 10
 taxa_mutacao = 0.01
 numero_geracoes = 100
 
 ag = AG(tamanho_populacao)
 
-resultado = ag.solve(taxa_mutacao,numero_geracoes,espacos,valores,limite)
+resultado = ag.solve(taxa_mutacao, numero_geracoes, dias, turnos, limite_dias)
 
-for i in range(len(lista_professores)):
-    if resultado[i] == 1:
-      print(f'Professor: {lista_professores[i].nome}')
-        # print("Nome: %s \n R$: %s \n " % (
-        #     lista_professores[i].name, 
-        #     lista_professores[i].value))
-    
-pl.plot(ag.solution_list)
-pl.title("Acompanhamento dos valores")
-pl.show()
+# for i in range(len(lista_professores)):
+#     if resultado[i] == 1:
+#       print(f'Professor: {lista_professores[i].nome}')
+#         # print("Nome: %s \n R$: %s \n " % (
+#         #     lista_professores[i].name,
+#         #     lista_professores[i].value))
+
+# pl.plot(ag.solution_list)
+# pl.title("Acompanhamento dos valores")
+# pl.show()
 
 # my_table.field_names = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"]
 # my_table.add_row([lista_professores[rd.randint(0, 14)], lista_professores[rd.randint(0, 14)], lista_professores[rd.randint(0, 14)], lista_professores[rd.randint(0, 14)], lista_professores[rd.randint(0, 14)]])
